@@ -58,8 +58,8 @@ void Demo2(std::string filename){
 	
 	tic();
 	FrequentPatternTree fpt;
-	float min_sup = 0.1f;
-	int minsupportCount = 20;//min_sup * itMap.size();
+	float min_sup = 0.5f;
+	int minsupportCount = min_sup * itMap.size();
 	std::cout<<" minsupport = "<<minsupportCount<<" ("<<min_sup<<" ) \n";
 	fpt.init( cf, itMap, minsupportCount);
 	fpt.buildFPTree();
@@ -72,7 +72,7 @@ void Demo2(std::string filename){
 	toc("run A-priori");
 	tic();
 	fpt.GenerateAssociationRule(0.9f);
-	//fpt.printAssociationRule();
+	fpt.printAssociationRule();
 	toc("generate Rule");
 	toc("total-time");
 	std::vector<std::pair<int, int> > vec = cf.objVector(0);
@@ -82,7 +82,7 @@ void Demo2(std::string filename){
 void main(int argc, char* argv[])
 {
 	std::string filename = "data4";
-  Demo1();
+	Demo1();
 	Demo2(filename);
 	convertToArff(filename, "IBM_Dataset2");
 	system("PAUSE");
