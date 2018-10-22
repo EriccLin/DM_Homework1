@@ -1,0 +1,2 @@
+# DM_Homework1
+NCKU_CSIE_DataMining_Cource_Homework1
